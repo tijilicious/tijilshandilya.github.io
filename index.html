@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tijil Shandilya — Senior Data Analyst</title>
+<meta name="description" content="Senior Data Analyst at Deutsche Telekom Digital Labs with 5+ years of experience in BI, growth analytics and data visualisation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+<style>
+/* ── RESET ── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+
+/* ── TOKENS ── */
+:root{
+  --ink:#0f0e0d;--ink2:#3a3835;--ink3:#7a7570;
+  --paper:#faf8f4;--paper2:#f2efe8;--paper3:#e8e4da;
+  --accent:#c94a2a;--line:rgba(15,14,13,0.1);
+}
+
+/* ── BASE ── */
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.6;overflow-x:hidden}
+a{text-decoration:none;color:inherit}
+
+/* ── NAV ── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1rem 3rem;
+  background:rgba(250,248,244,0.92);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--line);
+}
+.nav-logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:-.02em}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2rem}
+.nav-links a{font-size:.8rem;color:var(--ink2);letter-spacing:.06em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-contact{background:var(--ink);color:var(--paper);font-size:.8rem;padding:.5rem 1.25rem;letter-spacing:.04em;transition:background .2s}
+.nav-contact:hover{background:var(--accent)}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;padding-top:4.5rem}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:4rem 3rem;border-right:1px solid var(--line)}
+.hero-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.hero-tag::before{content:'';width:32px;height:1px;background:var(--accent)}
+.hero-name{font-family:'Syne',sans-serif;font-weight:800;font-size:clamp(2.4rem,5vw,4.5rem);line-height:.95;letter-spacing:-.03em;margin-bottom:1.5rem}
+.hero-name em{font-style:normal;color:var(--accent)}
+.hero-desc{font-size:1rem;color:var(--ink2);line-height:1.7;max-width:420px;margin-bottom:2.5rem}
+.hero-actions{display:flex;gap:1rem}
+.btn-primary{background:var(--ink);color:var(--paper);padding:.75rem 1.75rem;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.9rem;transition:background .2s;display:inline-block}
+.btn-primary:hover{background:var(--accent)}
+.btn-outline{border:1px solid var(--ink3);color:var(--ink2);background:transparent;padding:.75rem 1.75rem;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.9rem;transition:all .2s;display:inline-block}
+.btn-outline:hover{border-color:var(--ink);color:var(--ink)}
+.hero-right{display:flex;flex-direction:column;justify-content:center;padding:4rem 3rem;background:var(--paper2)}
+.stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin-bottom:2rem}
+.stat-cell{background:var(--paper2);padding:1.5rem}
+.stat-num{font-family:'Syne',sans-serif;font-weight:800;font-size:2.2rem;color:var(--accent);line-height:1}
+.stat-label{font-size:.75rem;color:var(--ink3);text-transform:uppercase;letter-spacing:.08em;margin-top:.3rem}
+.quick-skills{display:flex;flex-wrap:wrap;gap:.5rem}
+.skill-tag{font-size:.75rem;padding:.3rem .75rem;border:1px solid var(--paper3);background:var(--paper);color:var(--ink2);letter-spacing:.03em}
+
+/* ── SECTION COMMON ── */
+section{padding:5rem 3rem}
+.section-header{display:flex;align-items:baseline;gap:1.5rem;margin-bottom:3rem}
+.section-num{font-family:'Syne',sans-serif;font-size:.75rem;color:var(--accent);letter-spacing:.1em}
+.section-title{font-family:'Syne',sans-serif;font-size:2rem;font-weight:700;letter-spacing:-.02em}
+.section-line{flex:1;height:1px;background:var(--line)}
+
+/* ── EXPERIENCE ── */
+#experience{background:var(--paper2);border-top:1px solid var(--line);padding:5rem 0}
+#experience .section-header{padding:0 3rem}
+
+.exp-block{margin-bottom:2px}
+.exp-divider{font-size:.7rem;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase;padding:.75rem 3rem;font-weight:500;display:flex;align-items:center;gap:10px;background:var(--paper2)}
+.exp-divider::before,.exp-divider::after{content:'';flex:1;height:1px;background:var(--line)}
+.exp-card{padding:2rem 3rem;position:relative;overflow:hidden}
+.brand-bar{display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem}
+.role-line{font-size:.9rem;font-weight:600;margin-bottom:.25rem}
+.period-loc{font-size:.75rem;color:var(--ink3);margin-bottom:1.25rem;display:flex;align-items:center;gap:1rem;flex-wrap:wrap}
+.period-loc span{display:flex;align-items:center;gap:.25rem}
+.metrics-row{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#e5e5e5;border:1px solid #e5e5e5;margin-bottom:1.25rem}
+.metric{padding:.85rem .5rem;text-align:center}
+.metric-val{font-size:1.25rem;font-weight:700;line-height:1;margin-bottom:.15rem}
+.metric-lbl{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;opacity:.6}
+.projects{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.25rem}
+.proj-row{display:flex;align-items:flex-start;gap:.6rem;padding:.65rem .85rem}
+.proj-dot{width:6px;height:6px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.proj-text{font-size:.82rem;line-height:1.55;flex:1}
+.proj-text strong{font-weight:600}
+.proj-badge{font-size:.68rem;font-weight:600;padding:.15rem .6rem;white-space:nowrap;margin-left:auto;flex-shrink:0}
+.tools{display:flex;flex-wrap:wrap;gap:.35rem}
+.tool-pill{font-size:.7rem;font-weight:500;padding:.2rem .65rem}
+
+/* TIRA */
+.tira-card{background:#fff;border-top:3px solid #F11A00}
+.tira-logo{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:700;letter-spacing:.12em;color:#111}
+.tira-logo sup{font-size:.6rem;color:#F11A00;vertical-align:super}
+.tira-badge{background:#F11A00;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.3rem .9rem;text-transform:uppercase}
+.tira-card .metric{background:#fff}.tira-card .metric-val{color:#F11A00}
+.tira-card .proj-row{background:#fff7f6;border-left:2px solid #F11A00}
+.tira-card .proj-dot{background:#F11A00}
+.tira-card .proj-badge{background:#fff0ee;color:#c01400}
+.tira-card .tool-pill{background:#fff0ee;color:#c01400;border:1px solid #ffd4ce}
+
+/* MX */
+.mx-card{background:#0f0f0f;border-top:3px solid #FF6C00}
+.mx-logo{display:flex;align-items:center;gap:.4rem}
+.mx-box{background:#FF6C00;color:#fff;font-size:.85rem;font-weight:800;padding:.25rem .5rem}
+.mx-name{color:#fff;font-size:.9rem;font-weight:600;letter-spacing:.04em}
+.mx-badge{background:#1e1e1e;color:#FF6C00;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.3rem .9rem;text-transform:uppercase;border:1px solid #2a2a2a}
+.mx-card .role-line{color:#fff}
+.mx-card .period-loc{color:#666}
+.mx-card .metrics-row{background:#1e1e1e;border-color:#1e1e1e}
+.mx-card .metric{background:#111}.mx-card .metric-val{color:#FF6C00}
+.mx-card .metric-lbl{color:#555;opacity:1}
+.mx-card .proj-row{background:#161616;border-left:2px solid #FF6C00}
+.mx-card .proj-text{color:#ccc}.mx-card .proj-text strong{color:#fff}
+.mx-card .proj-dot{background:#FF6C00}
+.mx-card .proj-badge{background:#1e1e1e;color:#FF6C00;border:1px solid #2a2a2a}
+.mx-card .tool-pill{background:#1a1a1a;color:#777;border:1px solid #222}
+
+/* BYJU'S */
+.byjus-card{background:#fff;border-top:3px solid #6C3CE1}
+.b-logo{display:flex;align-items:center;gap:.5rem}
+.b-icon{width:28px;height:28px;background:#6C3CE1;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.75rem;color:#fff}
+.b-name{font-family:'Nunito',sans-serif;font-size:1rem;font-weight:900;color:#6C3CE1}
+.b-name span{color:#F59E0B}
+.byjus-badge{background:#EEE8FF;color:#6C3CE1;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.3rem .9rem;border-radius:20px;text-transform:uppercase}
+.byjus-card .metric{background:#f8f7fe}.byjus-card .metric-val{color:#6C3CE1}
+.byjus-card .proj-row{background:#f8f7fe;border-left:2px solid #6C3CE1;border-radius:0 6px 6px 0}
+.byjus-card .proj-dot{background:#6C3CE1}
+.byjus-card .proj-badge{background:#EEE8FF;color:#4a22c0;border-radius:20px}
+.byjus-card .tool-pill{background:#f3f0ff;color:#5030b0;border:1px solid #ddd8f8;border-radius:20px}
+.live-pill{display:inline-flex;align-items:center;gap:.35rem;background:#FFF4F4;border:1px solid #FFD0D0;color:#cc2200;font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:20px;margin-bottom:.9rem}
+.live-dot{width:6px;height:6px;border-radius:50%;background:#FF4444;animation:lp 1.5s infinite}
+@keyframes lp{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* DTDL — Deutsche Telekom Digital Labs */
+.dtdl-card{background:#fff;border-top:3px solid #E10075;position:relative}
+.dtdl-card::after{content:'CURRENT ROLE';position:absolute;top:1.5rem;right:3rem;font-size:.6rem;font-weight:700;letter-spacing:.12em;color:#E10075;background:#fff0f7;border:1px solid #f9c0de;padding:.2rem .7rem}
+.dtdl-logo{display:flex;align-items:center;gap:.6rem}
+.dtdl-t{width:32px;height:32px;background:#E10075;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;font-weight:900;font-family:'Syne',sans-serif;letter-spacing:-.03em}
+.dtdl-wordmark{font-size:.85rem;font-weight:700;color:#111;line-height:1.2}
+.dtdl-wordmark span{display:block;font-size:.65rem;color:#888;font-weight:400;letter-spacing:.04em}
+.dtdl-badge{background:#E10075;color:#fff;font-size:.6rem;font-weight:700;letter-spacing:.08em;padding:.3rem .9rem;text-transform:uppercase}
+.dtdl-card .metric{background:#fff}.dtdl-card .metric-val{color:#E10075}
+.dtdl-card .metrics-row{background:#fce8f3;border-color:#fce8f3}
+.dtdl-card .proj-row{background:#fff0f7;border-left:2px solid #E10075}
+.dtdl-card .proj-dot{background:#E10075}
+.dtdl-card .proj-badge{background:#fff0f7;color:#a00055}
+.dtdl-card .tool-pill{background:#fff0f7;color:#a00055;border:1px solid #f9c0de}
+
+/* ── SKILLS ── */
+#skills{border-top:1px solid var(--line)}
+.skills-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem}
+.skill-cat-title{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--ink3);margin-bottom:1rem}
+.skill-bars{display:flex;flex-direction:column;gap:.85rem;margin-bottom:2rem}
+.skill-row{display:flex;align-items:center;gap:1rem}
+.skill-name{font-size:.85rem;width:100px;flex-shrink:0}
+.skill-track{flex:1;height:3px;background:var(--paper3)}
+.skill-fill{height:100%;background:var(--accent);width:0;transition:width 1.5s cubic-bezier(.16,1,.3,1)}
+.skill-pct{font-size:.75rem;color:var(--ink3);width:32px;text-align:right}
+
+/* ── AI CHAT ── */
+#ai-section{background:var(--paper2);border-top:1px solid var(--line)}
+.chat-wrapper{max-width:700px;margin:0 auto;border:1px solid var(--line);background:var(--paper)}
+.chat-header{padding:1rem 1.5rem;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:.75rem}
+.chat-dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+.chat-header-text{font-size:.8rem;font-weight:500;letter-spacing:.03em}
+.chat-header-sub{font-size:.7rem;color:var(--ink3)}
+.chat-messages{height:300px;overflow-y:auto;padding:1.5rem;display:flex;flex-direction:column;gap:1rem}
+.msg{max-width:82%}
+.msg-user{align-self:flex-end;background:var(--ink);color:var(--paper);padding:.6rem 1rem;font-size:.85rem;border-radius:2px}
+.msg-ai{align-self:flex-start;background:var(--paper2);padding:.6rem 1rem;font-size:.85rem;color:var(--ink2);border:1px solid var(--line);border-radius:2px;line-height:1.6}
+.msg-ai.loading{color:var(--ink3);font-style:italic}
+.chat-suggestions{padding:.6rem 1.5rem;border-top:1px solid var(--line);display:flex;gap:.4rem;flex-wrap:wrap}
+.suggest-btn{font-size:.7rem;color:var(--ink3);border:1px solid var(--line);background:transparent;padding:.25rem .65rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .15s}
+.suggest-btn:hover{border-color:var(--accent);color:var(--accent)}
+.chat-input-row{display:flex;border-top:1px solid var(--line)}
+.chat-input-row input{flex:1;border:none;background:transparent;padding:.9rem 1.5rem;font-family:'DM Sans',sans-serif;font-size:.9rem;color:var(--ink);outline:none}
+.chat-send{border:none;border-left:1px solid var(--line);background:var(--ink);color:var(--paper);padding:0 1.5rem;cursor:pointer;font-size:.85rem;letter-spacing:.04em;transition:background .2s;font-family:'DM Sans',sans-serif}
+.chat-send:hover{background:var(--accent)}
+.chat-messages::-webkit-scrollbar{width:4px}
+.chat-messages::-webkit-scrollbar-thumb{background:var(--paper3)}
+
+/* ── FOOTER ── */
+footer{background:var(--ink);color:var(--paper2);padding:3rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;border-top:1px solid var(--line)}
+.f-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem}
+.f-sub{font-size:.75rem;color:#7a7570;margin-top:.2rem}
+.f-links{display:flex;gap:1.5rem}
+.f-links a{font-size:.8rem;color:var(--paper3);transition:color .2s}
+.f-links a:hover{color:var(--accent)}
+
+/* ── REVEAL ── */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">T<span>.</span>S</div>
+  <div class="nav-links">
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#ai-section">Ask AI</a>
+  </div>
+  <a href="mailto:tijil.shandilya0208@gmail.com" class="nav-contact">Get in Touch</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <span class="hero-tag">Senior Data Analyst — OneTV · Deutsche Telekom Digital Labs</span>
+    <h1 class="hero-name">Tijil<br><em>Shandilya</em></h1>
+    <p class="hero-desc">4+ years turning raw data into growth. Currently analysing TV &amp; OTT behaviour at Deutsche Telekom's OneTV platform. Previously at Tira (Reliance Retail), MX Player &amp; BYJU'S.</p>
+    <div class="hero-actions">
+      <a href="mailto:tijil.shandilya0208@gmail.com" class="btn-primary">Get in Touch</a>
+      <a href="https://www.linkedin.com/in/tijil-shandilya/" target="_blank" class="btn-outline">LinkedIn ↗</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="stat-grid">
+      <div class="stat-cell"><div class="stat-num">5+</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-cell"><div class="stat-num">4</div><div class="stat-label">Companies</div></div>
+      <div class="stat-cell"><div class="stat-num">21%</div><div class="stat-label">Max CTR Lift</div></div>
+      <div class="stat-cell"><div class="stat-num">5×</div><div class="stat-label">Revenue Growth</div></div>
+    </div>
+    <div class="quick-skills">
+      <span class="skill-tag">SQL</span><span class="skill-tag">Python</span><span class="skill-tag">Tableau</span>
+      <span class="skill-tag">AWS Athena</span><span class="skill-tag">Metabase</span><span class="skill-tag">Pandas</span>
+      <span class="skill-tag">scikit-learn</span><span class="skill-tag">Data Studio</span>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2 class="section-title">Experience</h2>
+    <div class="section-line"></div>
+  </div>
+
+  <!-- DEUTSCHE TELEKOM DIGITAL LABS -->
+  <div class="exp-divider reveal"><span>Deutsche Telekom Digital Labs · Gurugram</span></div>
+  <div class="exp-block dtdl-card exp-card reveal">
+    <div class="brand-bar">
+      <div class="dtdl-logo">
+        <div class="dtdl-t">T</div>
+        <div class="dtdl-wordmark">Deutsche Telekom<span>Digital Labs · India</span></div>
+      </div>
+      <div class="dtdl-badge">Senior Data Analyst</div>
+    </div>
+    <div class="role-line">Senior Data Analyst — OneTV Platform</div>
+    <div class="period-loc">
+      <span>&#128197; Jul 2025 – Present</span>
+      <span>&#128205; Gurugram, HR</span>
+      <span>&#128250; TV &amp; OTT / Telecom</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-val">OneTV</div><div class="metric-lbl">Platform</div></div>
+      <div class="metric"><div class="metric-val">EU</div><div class="metric-lbl">Market Scope</div></div>
+      <div class="metric"><div class="metric-val">🏆</div><div class="metric-lbl">ElevateX Winner</div></div>
+      <div class="metric"><div class="metric-val">Athena</div><div class="metric-lbl">AWS Stack</div></div>
+    </div>
+    <div class="projects">
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>OneTV Analytics</strong> — Senior Data Analyst for Deutsche Telekom's TV &amp; OTT aggregation platform; built Metabase views to analyse watch duration and playback distribution across Live TV and VOD</div>
+        <div class="proj-badge">Live TV · VOD</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Inactive User Cohort Analysis</strong> — Ad-hoc analysis to identify inactive user cohorts using dynamic activity windows</div>
+        <div class="proj-badge">Cohorts</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>ElevateX — Internal Competition Winner</strong> — Won DTDL's internal innovation competition as part of a team of 4, delivering a working solution to a real business problem</div>
+        <div class="proj-badge">🏆 Winner</div>
+      </div>
+    </div>
+    <div class="tools">
+      <span class="tool-pill">AWS Athena</span><span class="tool-pill">SQL</span><span class="tool-pill">Metabase</span><span class="tool-pill">Python</span><span class="tool-pill">OTT Analytics</span>
+    </div>
+  </div>
+
+  <!-- TIRA -->
+  <div class="exp-divider reveal"><span>Tira · Reliance Retail</span></div>
+  <div class="exp-block tira-card exp-card reveal">
+    <div class="brand-bar">
+      <div class="tira-logo">TIRA<sup>®</sup></div>
+      <div class="tira-badge">Deputy Manager — BI</div>
+    </div>
+    <div class="role-line">Business Intelligence &amp; Strategy · Bengaluru</div>
+    <div class="period-loc">
+      <span>&#128197; Jul 2024 – Jul 2025</span>
+      <span>&#128205; Bengaluru, KA</span>
+      <span>&#127978; Reliance Retail</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-val">BI</div><div class="metric-lbl">Data Owner</div></div>
+      <div class="metric"><div class="metric-val">100M+</div><div class="metric-lbl">User Base</div></div>
+      <div class="metric"><div class="metric-val">2</div><div class="metric-lbl">Key Projects</div></div>
+      <div class="metric"><div class="metric-val">S&amp;P</div><div class="metric-lbl">Team</div></div>
+    </div>
+    <div class="projects">
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Seller Cancellation Analysis</strong> — Revenue impact, cart size analysis &amp; reward optimisation to reduce churn at cancellation touchpoints</div>
+        <div class="proj-badge">Revenue</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Sample Activation Metrics</strong> — Built reporting structure and success metrics for on-site sampling activations</div>
+        <div class="proj-badge">Reporting</div>
+      </div>
+    </div>
+    <div class="tools">
+      <span class="tool-pill">SQL</span><span class="tool-pill">Python</span><span class="tool-pill">Tableau</span><span class="tool-pill">Data Studio</span><span class="tool-pill">Revenue Analytics</span>
+    </div>
+  </div>
+
+  <!-- MX PLAYER -->
+  <div class="exp-divider reveal"><span>MX Player · Mumbai</span></div>
+  <div class="exp-block mx-card exp-card reveal">
+    <div class="brand-bar">
+      <div class="mx-logo"><div class="mx-box">MX</div><div class="mx-name">Player</div></div>
+      <div class="mx-badge">Growth Insight Analyst</div>
+    </div>
+    <div class="role-line">Associate — Growth Insight Analyst</div>
+    <div class="period-loc">
+      <span>&#128197; Jul 2022 – Jul 2024</span>
+      <span>&#128205; Mumbai, MH</span>
+      <span>&#127916; OTT / Streaming</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-val">+21%</div><div class="metric-lbl">CTR Lift</div></div>
+      <div class="metric"><div class="metric-val">5×</div><div class="metric-lbl">Local Revenue</div></div>
+      <div class="metric"><div class="metric-val">+85%</div><div class="metric-lbl">OTT Watch Time</div></div>
+      <div class="metric"><div class="metric-val">+12%</div><div class="metric-lbl">iOS Engagement</div></div>
+    </div>
+    <div class="projects">
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Search Optimisation</strong> — Improved overall watch time by 7%, trending CTR by 21%, trending watch share from 3% to 11%</div>
+        <div class="proj-badge">+7% WT</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Local Pack</strong> — 5× revenue from local subscribed users; +85% OTT watch time from regional content</div>
+        <div class="proj-badge">5× Rev</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>iOS Continue Watching</strong> — Persistent bottom bar boosted watch history stickiness by 12%</div>
+        <div class="proj-badge">+12%</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Ads Reporting Automation</strong> — Fully automated daily ad metrics pipeline via Python, Google App Script &amp; Ads Manager</div>
+        <div class="proj-badge">Auto</div>
+      </div>
+    </div>
+    <div class="tools">
+      <span class="tool-pill">BigQuery</span><span class="tool-pill">Python</span><span class="tool-pill">SQL</span><span class="tool-pill">Google App Script</span><span class="tool-pill">Ads Manager</span><span class="tool-pill">Data Studio</span>
+    </div>
+  </div>
+
+  <!-- BYJU'S -->
+  <div class="exp-divider reveal"><span>BYJU'S Exam Prep · Noida</span></div>
+  <div class="exp-block byjus-card exp-card reveal">
+    <div class="brand-bar">
+      <div class="b-logo">
+        <div class="b-icon">&#127891;</div>
+        <div class="b-name">BYJU'S <span>Exam Prep</span></div>
+      </div>
+      <div class="byjus-badge">Data Analyst</div>
+    </div>
+    <div class="live-pill"><div class="live-dot"></div> First role — foundation built here</div>
+    <div class="role-line">Data Analyst · Noida, UP</div>
+    <div class="period-loc">
+      <span>&#128197; Jun 2021 – Jun 2022</span>
+      <span>&#128205; Noida, UP</span>
+      <span>&#128187; EdTech</span>
+    </div>
+    <div class="metrics-row">
+      <div class="metric"><div class="metric-val">3</div><div class="metric-lbl">Teams Served</div></div>
+      <div class="metric"><div class="metric-val">4+</div><div class="metric-lbl">Tools Used</div></div>
+      <div class="metric"><div class="metric-val">DQ</div><div class="metric-lbl">Quality Lead</div></div>
+      <div class="metric"><div class="metric-val">3Cr+</div><div class="metric-lbl">Platform Users</div></div>
+    </div>
+    <div class="projects">
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Cross-functional Analytics</strong> — Data solutions for Customer Experience, Growth &amp; Marketing, and Revenue teams</div>
+        <div class="proj-badge">3 Teams</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>BI Visualisation</strong> — Built dashboards and reports using BigQuery, Python, Tableau &amp; Data Studio</div>
+        <div class="proj-badge">Viz</div>
+      </div>
+      <div class="proj-row">
+        <div class="proj-dot"></div>
+        <div class="proj-text"><strong>Data Quality Ownership</strong> — Supervised data integrity and workflow quality across all team pipelines</div>
+        <div class="proj-badge">DQ</div>
+      </div>
+    </div>
+    <div class="tools">
+      <span class="tool-pill">SQL / BigQuery</span><span class="tool-pill">Python</span><span class="tool-pill">Tableau</span><span class="tool-pill">Data Studio</span><span class="tool-pill">Pandas</span>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-header reveal">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Skills</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-layout reveal">
+    <div>
+      <div class="skill-cat-title">Data &amp; Analytics</div>
+      <div class="skill-bars" id="bars1">
+        <div class="skill-row"><span class="skill-name">SQL</span><div class="skill-track"><div class="skill-fill" data-w="95"></div></div><span class="skill-pct">95%</span></div>
+        <div class="skill-row"><span class="skill-name">Python</span><div class="skill-track"><div class="skill-fill" data-w="85"></div></div><span class="skill-pct">85%</span></div>
+        <div class="skill-row"><span class="skill-name">BigQuery</span><div class="skill-track"><div class="skill-fill" data-w="88"></div></div><span class="skill-pct">88%</span></div>
+        <div class="skill-row"><span class="skill-name">Pandas</span><div class="skill-track"><div class="skill-fill" data-w="82"></div></div><span class="skill-pct">82%</span></div>
+        <div class="skill-row"><span class="skill-name">scikit-learn</span><div class="skill-track"><div class="skill-fill" data-w="65"></div></div><span class="skill-pct">65%</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="skill-cat-title">Visualisation &amp; BI</div>
+      <div class="skill-bars" id="bars2">
+        <div class="skill-row"><span class="skill-name">Tableau</span><div class="skill-track"><div class="skill-fill" data-w="88"></div></div><span class="skill-pct">88%</span></div>
+        <div class="skill-row"><span class="skill-name">Data Studio</span><div class="skill-track"><div class="skill-fill" data-w="90"></div></div><span class="skill-pct">90%</span></div>
+        <div class="skill-row"><span class="skill-name">Google Ads</span><div class="skill-track"><div class="skill-fill" data-w="78"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skill-row"><span class="skill-name">App Script</span><div class="skill-track"><div class="skill-fill" data-w="75"></div></div><span class="skill-pct">75%</span></div>
+        <div class="skill-row"><span class="skill-name">NumPy</span><div class="skill-track"><div class="skill-fill" data-w="80"></div></div><span class="skill-pct">80%</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI CHAT -->
+<section id="ai-section">
+  <div class="section-header reveal">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Ask About Tijil</h2>
+    <div class="section-line"></div>
+  </div>
+  <p style="color:var(--ink2);font-size:.9rem;margin-bottom:2rem;max-width:480px" class="reveal">Have questions about my experience, skills, or projects? Ask the AI assistant below — it knows my entire background.</p>
+  <div class="chat-wrapper reveal">
+    <div class="chat-header">
+      <div class="chat-dot"></div>
+      <div>
+        <div class="chat-header-text">Portfolio Assistant</div>
+        <div class="chat-header-sub">Powered by Claude · Ask anything about Tijil</div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="msg msg-ai">Hi! I'm Tijil's portfolio assistant. Ask me about his experience, projects, skills, or anything else you'd like to know.</div>
+    </div>
+    <div class="chat-suggestions">
+      <button class="suggest-btn" onclick="sendSuggestion(this)">What's your biggest impact?</button>
+      <button class="suggest-btn" onclick="sendSuggestion(this)">Tell me about MX Player work</button>
+      <button class="suggest-btn" onclick="sendSuggestion(this)">What tools do you use?</button>
+      <button class="suggest-btn" onclick="sendSuggestion(this)">Why hire Tijil?</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Ask about experience, projects, skills…" onkeydown="if(event.key==='Enter')sendChat()">
+      <button class="chat-send" onclick="sendChat()">Send →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div>
+    <div class="f-name">Tijil Shandilya</div>
+    <div class="f-sub">Senior Data Analyst · Gurugram, India</div>
+  </div>
+  <div class="f-links">
+    <a href="mailto:tijil.shandilya0208@gmail.com">tijil.shandilya0208@gmail.com</a>
+    <a href="https://github.com" target="_blank">GitHub ↗</a>
+    <a href="https://www.linkedin.com/in/tijil-shandilya/" target="_blank">LinkedIn ↗</a>
+  </div>
+</footer>
+
+<script>
+/* ── Scroll reveal ── */
+const revObs = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible') });
+}, {threshold: 0.08});
+document.querySelectorAll('.reveal').forEach(el => revObs.observe(el));
+
+/* ── Skill bars ── */
+const skillObs = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.querySelectorAll('.skill-fill').forEach(b => { b.style.width = b.dataset.w + '%' });
+    }
+  });
+}, {threshold: 0.3});
+document.querySelector('#skills').querySelectorAll('.skill-bars').forEach(el => skillObs.observe(el));
+
+/* ── AI Chat ── */
+const RESUME_CONTEXT = `You are the portfolio assistant for Tijil Shandilya, a Senior Data Analyst with 4+ years of experience. Answer questions about him in a professional, helpful tone. Keep answers concise (2–4 sentences). Highlight numbers and outcomes wherever possible.
+
+FULL BACKGROUND:
+Name: Tijil Shandilya | Email: tijil.shandilya0208@gmail.com | Phone: 7906901931 | LinkedIn: linkedin.com/in/tijil-shandilya
+
+EDUCATION: B.Tech Electrical & Electronics Engineering, JSS ATEN Noida, 2017–2021, CGPA 7.47.
+
+WORK EXPERIENCE:
+
+1. Deutsche Telekom Digital Labs (DTDL) — Senior Data Analyst, OneTV Platform | Jul 2025–Present | Gurugram
+   OneTV is Deutsche Telekom's TV & OTT aggregation platform serving European markets.
+   - Built Metabase views to analyse watch duration and playback distribution across Live TV and VOD.
+   - Performed ad-hoc analysis to identify inactive user cohorts using dynamic activity windows.
+   - Working with AWS Athena (SQL) and Metabase for analytics and reporting.
+   - Won ElevateX internal competition (team of 4) delivering a working solution to a real business problem.
+
+2. Tira (Reliance Retail) — Deputy Manager, Business Intelligence | Jul 2024–Jul 2025 | Bengaluru
+   - Owned BI requirements for Strategy & Projects team.
+   - Analysed seller cancellations and revenue impact.
+   - Designed success metrics for on-site sampling.
+
+3. MX Player — Associate Growth Insight Analyst | Jul 2022–Jul 2024 | Mumbai
+   - Search Optimisation: +7% watch time, +21% trending CTR, watch time share 3%→11%.
+   - Local Pack: 5× revenue from local subscribed users, +85% OTT watch time.
+   - Android Product: video CTR +7%, engagement +3%.
+   - Ad Load Time: −0.4ms ad initialisation via ad caching.
+   - iOS Continue Watching: +12% watch history engagement.
+   - Ads Automation: Python + Google App Script + Ads Manager pipeline.
+
+4. BYJU'S ExamPrep — Data Analyst | Jun 2021–Jun 2022 | Noida
+   - Built dashboards using BigQuery, Python, Tableau & Data Studio.
+   - Delivered analytics for CX, growth, marketing & revenue teams.
+   - Ensured data quality across reporting workflows.
+
+SKILLS: SQL, Python, AWS Athena, Metabase, Tableau, Data Studio, Pandas, NumPy, scikit-learn, BigQuery, Google Ads Manager, Google App Script.
+CERTIFICATIONS: Programming for Everybody (U of Michigan), Python Data Structures (U of Michigan), SEO (UC Davis), Marketing in a Digital World (UIUC).
+LANGUAGES: English, Hindi.
+LEADERSHIP: Business Head – Team Vega Racing (ESI & SAE BAJA). Core Member – SPADE.`;
+
+const msgs = document.getElementById('chatMessages');
+const inp  = document.getElementById('chatInput');
+
+function appendMsg(text, type) {
+  const d = document.createElement('div');
+  d.className = 'msg msg-' + type;
+  d.textContent = text;
+  msgs.appendChild(d);
+  msgs.scrollTop = msgs.scrollHeight;
+  return d;
+}
+
+function sendSuggestion(btn) { inp.value = btn.textContent; sendChat(); }
+
+async function sendChat() {
+  const text = inp.value.trim();
+  if(!text) return;
+  inp.value = '';
+  appendMsg(text, 'user');
+  const loader = appendMsg('Thinking…', 'ai loading');
+  try {
+    const res = await fetch('https://api.anthropic.com/v1/messages', {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        model: 'claude-opus-4-20250514',
+        max_tokens: 1000,
+        system: RESUME_CONTEXT,
+        messages: [{role:'user', content: text}]
+      })
+    });
+    const data = await res.json();
+    const reply = (data.content||[]).map(b => b.text||'').join('') || 'Sorry, no response received.';
+    loader.textContent = reply;
+    loader.classList.remove('loading');
+  } catch(err) {
+    loader.textContent = 'Something went wrong — please try again.';
+    loader.classList.remove('loading');
+  }
+}
+</script>
+</body>
+</html>
