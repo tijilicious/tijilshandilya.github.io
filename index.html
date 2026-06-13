@@ -572,18 +572,13 @@ async function sendChat() {
   appendMsg(text, 'user');
   const loader = appendMsg('Thinking…', 'ai loading');
   try {
-    const res = await fetch('https://api.anthropic.com/v1/messages', {
+    const res = await fetch('/api/chat', {
       method: 'POST',
       headers: {'Content-Type':'application/json'},
-      body: JSON.stringify({
-        model: 'claude-opus-4-20250514',
-        max_tokens: 1000,
-        system: RESUME_CONTEXT,
-        messages: [{role:'user', content: text}]
-      })
+      body: JSON.stringify({ message: text })
     });
     const data = await res.json();
-    const reply = (data.content||[]).map(b => b.text||'').join('') || 'Sorry, no response received.';
+    const reply = data.reply || 'Sorry, no response received.';
     loader.textContent = reply;
     loader.classList.remove('loading');
   } catch(err) {
